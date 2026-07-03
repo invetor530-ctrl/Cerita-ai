@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerita Rakyat AI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:5px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-top:15px;.
+    margin-bottom:5px;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.checkbox{
+    margin-top:15px;
+}
+
+.checkbox label{
+    font-weight:normal;
+    display:block;
+    margin:8px 0;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#0d6efd;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#084298;
+}
+
+.output{
+    margin-top:30px;
+    background:#fafafa;
+    border-radius:10px;
+    padding:20px;
+}
+
+.output h2{
+    margin-bottom:15px;
+}
+
+.box{
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:10px;
+    margin-bottom:12px;
+    min-height:50px;
+    background:white;
+}
+
+.action{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.action button{
+    margin-top:0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>📖 Cerita Rakyat AI</h1>
+<p>AI Generator Storytelling Indonesia</p>
+
+<label>Nama Cerita</label>
+<input type="text" placeholder="Contoh: Malin Kundang">
+
+<label>Provinsi</label>
+<select>
+<option>Pilih Provinsi</option>
+<option>Sumatera Barat</option>
+<option>Jawa Barat</option>
+<option>Jawa Tengah</option>
+<option>Jawa Timur</option>
+<option>Bali</option>
+<option>Kalimantan</option>
+<option>Sulawesi</option>
+<option>Papua</option>
+</select>
+
+<label>Jenis Cerita</label>
+<select>
+<option>Legenda</option>
+<option>Mitos</option>
+<option>Dongeng</option>
+<option>Asal Usul</option>
+</select>
+
+<label>Durasi</label>
+<select>
+<option>30 Detik</option>
+<option>60 Detik</option>
+<option>90 Detik</option>
+</select>
+
+<label>Gaya</label>
+<select>
+<option>Sinematik</option>
+<option>Horor</option>
+<option>Drama</option>
+<option>Dokumenter</option>
+</select>
+
+<label>Target Platform</label>
+<select>
+<option>YouTube Shorts</option>
+<option>TikTok</option>
+<option>Instagram Reels</option>
+</select>
+
+<label>Bahasa</label>
+<select>
+<option>Indonesia</option>
+<option>English</option>
+</select>
+
+<div class="checkbox">
+<label><input type="checkbox" checked> Judul Viral</label>
+<label><input type="checkbox" checked> Hook</label>
+<label><input type="checkbox" checked> Narasi Storytelling</label>
+<label><input type="checkbox" checked> Prompt Gambar</label>
+<label><input type="checkbox" checked> Prompt Video</label>
+<label><input type="checkbox" checked> Subtitle</label>
+<label><input type="checkbox" checked> Hashtag</label>
+<label><input type="checkbox" checked> Deskripsi YouTube</label>
+</div>
+
+<button onclick="generate()">🚀 GENERATE</button>
+
+<div class="output">
+
+<h2>HASIL</h2>
+
+<div class="box"><b>📌 Judul</b><br><span id="judul"></span></div>
+
+<div class="box"><b>🎣 Hook</b><br><span id="hook"></span></div>
+
+<div class="box"><b>📖 Cerita</b><br><span id="cerita"></span></div>
+
+<div class="box"><b>🎙️ Narasi</b><br><span id="narasi"></span></div>
+
+<div class="box"><b>🖼️ Prompt Gambar</b><br><span id="gambar"></span></div>
+
+<div class="box"><b>🎬 Prompt Video</b><br><span id="video"></span></div>
+
+<div class="box"><b>📝 Subtitle</b><br><span id="subtitle"></span></div>
+
+<div class="box"><b>📢 Hashtag</b><br><span id="hashtag"></span></div>
+
+<div class="box"><b>📄 Deskripsi YouTube</b><br><span id="deskripsi"></span></div>
+
+<div class="action">
+<button onclick="copyText()">📋 Salin Semua</button>
+<button>💾 Download TXT</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function generate(){
+
+document.getElementById("judul").innerHTML="Judul akan muncul di sini";
+document.getElementById("hook").innerHTML="Hook akan muncul di sini";
+document.getElementById("cerita").innerHTML="Cerita AI akan muncul di sini";
+document.getElementById("narasi").innerHTML="Narasi AI akan muncul di sini";
+document.getElementById("gambar").innerHTML="Prompt gambar Scene 1-10";
+document.getElementById("video").innerHTML="Prompt video Scene 1-10";
+document.getElementById("subtitle").innerHTML="Subtitle otomatis";
+document.getElementById("hashtag").innerHTML="#ceritarakyat #storytelling #shorts";
+document.getElementById("deskripsi").innerHTML="Deskripsi YouTube otomatis.";
+}
+
+function copyText(){
+navigator.clipboard.writeText(document.querySelector(".output").innerText);
+alert("Hasil berhasil disalin.");
+}
+</script>
+
+</body>
+</html>
